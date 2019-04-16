@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>Sage Shooter</name>
+    <description></description>
+    <version>1.0.0.0</version>
+    <author></author>
+    <author-email></author-email>
+    <author-website>http://</author-website>
+    <app-id>com.mycompany.myapp</app-id>
+    <unique-id>2m2oqhlgof90t</unique-id>
+    <saved-with-version>26500</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
+        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="progressbar" version="1">Progress bar</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
+        <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
+        <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
+        <behavior author="Scirra" id="Turret" version="1">Turret</behavior>
+        <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
+        <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
+        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
+    </used-behaviors>
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>1920</width>
+        <height>1080</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Fullscreen scaling">High quality</prop>
+        <prop name="Loader style">Progress bar &amp; logo</prop>
+        <prop name="Orientations">Landscape</prop>
+        <prop name="Pause on unfocus">No</prop>
+        <prop name="Physics engine">Box2D web</prop>
+        <prop name="Preview browser">(default)</prop>
+        <prop name="Sampling">Linear</prop>
+        <prop name="Use high-DPI display">Yes</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-type name="Ground" sid="5845401532956285">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="38273295202592">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="3319196371441938" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.217391" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Player" sid="2374295102430906">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Health" sid="394502635562781" type="number" />
+                <instance-variable name="Grenades" sid="4203396451020987" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Platform" sid="6206016807389624">
+                    <behavior id="Platform" />
+                </behavior-type>
+                <behavior-type name="BoundToLayout" sid="1189838928729173">
+                    <behavior id="bound" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4389441906226232" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <image-point name="Imagepoint 1" x="0.42" y="0.716" />
+                        <collision-poly>
+                            <point x="0.352" y="0.248" />
+                            <point x="0.648" y="0.244" />
+                            <point x="0.804" y="0.992" />
+                            <point x="0.308" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="PlayerArm" sid="9669058179423582">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6789776069132254" speed="5">
+                    <frame duration="1" hotspotX="0.34" hotspotY="0.372">
+                        <image-point name="Imagepoint 1" x="0.912" y="0.212" />
+                        <collision-poly>
+                            <point x="0.308" y="0.324" />
+                            <point x="0.576" y="0.148" />
+                            <point x="0.928" y="0.212" />
+                            <point x="0.628" y="0.484" />
+                            <point x="0.32" y="0.428" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Mouse" sid="2327047745486217">
+            <plugin id="Mouse" />
+        </object-type>
+        <object-type name="Cursor" sid="9600715120304537">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="MouseAngle" sid="1324422159445796" type="number" />
+                <instance-variable name="MouseDistance" sid="2412770276334447" type="number" />
+            </instance-variables>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9229555388863272" speed="5">
+                    <frame duration="1" hotspotX="0.496" hotspotY="0.496">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Keyboard" sid="4865308356897929">
+            <plugin id="Keyboard" />
+        </object-type>
+        <object-type name="Grenade" sid="8761874565863461">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable comment="Time until Detonation" name="Timer" sid="7349328306096167" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Bullet" sid="7399581143000667">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1526630539031033" speed="5">
+                    <frame duration="1" hotspotX="0.396226" hotspotY="0.448">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Bullet" sid="8738844977169527">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="5141119196672517">
+                    <behavior id="Bullet" />
+                </behavior-type>
+                <behavior-type name="DestroyOutsideLayout" sid="7881636728297048">
+                    <behavior id="destroy" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2336880439500911" speed="5">
+                    <frame duration="1" hotspotX="0.357724" hotspotY="0.512821" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Explosion" sid="6985428302189959">
+            <plugin id="Particles" />
+            <texture original-source="E:\OneDrive\Dev Stuff\Resources\freebundle\Sprites\Space\Explosions\Exp_type_C.gif" />
+        </object-type>
+        <object-type name="HealthBar" sid="375910903112938">
+            <plugin id="progressbar" />
+        </object-type>
+        <object-type name="GrenadeCounterText" sid="2062158387646775">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="HealthLabel" sid="8420317818550721">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="GrenadeCounter" sid="9435612180485211">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1978321816187243" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504" original-source="E:\OneDrive\Dev Stuff\Game Projects\Sage Shooter\Grenade.png">
+                        <collision-poly>
+                            <point x="0.188679" y="0.16" />
+                            <point x="0.5" y="0.016" />
+                            <point x="0.792453" y="0.176" />
+                            <point x="0.981132" y="0.496" />
+                            <point x="0.867925" y="0.888" />
+                            <point x="0.5" y="0.992" />
+                            <point x="0.198113" y="0.832" />
+                            <point x="0.0283019" y="0.496" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="HeliEnemy" sid="6887532469380661">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Health" sid="4849954073175867" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Sine" sid="6512528113186501">
+                    <behavior id="Sin" />
+                </behavior-type>
+            </behaviors>
+            <container>
+                <type>HeliTurret</type>
+                <type>HeliEnemy</type>
+                <type>EnemyHealthBar</type>
+                <type>Helicopter_Prop</type>
+            </container>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4498120314816107" speed="5">
+                    <frame duration="1" hotspotX="0.499203" hotspotY="0.50431" original-source="C:\Users\Sage\Desktop\heli.png">
+                        <image-point name="Imagepoint 1" x="0.213716" y="0.793103" />
+                        <image-point name="Imagepoint 2" x="0.460925" y="-0.0775862" />
+                        <image-point name="Imagepoint 3" x="0.575758" y="0.431034" />
+                        <image-point name="PropPoint" x="0.862839" y="0.405172" />
+                        <collision-poly>
+                            <point x="0.00956938" y="0.142241" />
+                            <point x="0.433812" y="0.0172414" />
+                            <point x="0.845295" y="0.0172414" />
+                            <point x="0.99362" y="0.172414" />
+                            <point x="0.915471" y="0.715517" />
+                            <point x="0.405104" y="0.836207" />
+                            <point x="0.0845295" y="0.814655" />
+                            <point x="0.0956938" y="0.564656" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="EnemyBullet" sid="6671162716162074">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="3375895739284796">
+                    <behavior id="Bullet" />
+                </behavior-type>
+                <behavior-type name="DestroyOutsideLayout" sid="8688121190635289">
+                    <behavior id="destroy" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9048511801031311" speed="5">
+                    <frame duration="1" hotspotX="0.504065" hotspotY="0.512821" original-source="E:\OneDrive\Dev Stuff\Game Projects\Sage Shooter\bullet.png">
+                        <collision-poly>
+                            <point x="0.0243902" y="0.0769231" />
+                            <point x="0.495935" y="0.025641" />
+                            <point x="0.918699" y="0.25641" />
+                            <point x="0.98374" y="0.487179" />
+                            <point x="0.918699" y="0.74359" />
+                            <point x="0.495935" y="0.948718" />
+                            <point x="0.0162602" y="0.948718" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="HeliTurret" sid="9019618887149305">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Turret" sid="8933345992783189">
+                    <behavior id="Turret" />
+                </behavior-type>
+            </behaviors>
+            <container>
+                <type>HeliTurret</type>
+                <type>HeliEnemy</type>
+                <type>EnemyHealthBar</type>
+                <type>Helicopter_Prop</type>
+            </container>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4532725570184286" speed="5">
+                    <frame duration="1" hotspotX="0.166667" hotspotY="0.525424" original-source="C:\Users\Sage\Desktop\HeliTurret_new_14.png">
+                        <image-point name="Imagepoint 1" x="0.845238" y="0.40678" />
+                        <image-point name="Imagepoint 2" x="0.857143" y="0.508475" />
+                        <image-point name="Imagepoint 3" x="0.857143" y="0.644068" />
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="EnemyHealthBar" sid="8287492602405631">
+            <plugin id="progressbar" />
+            <container>
+                <type>HeliTurret</type>
+                <type>HeliEnemy</type>
+                <type>EnemyHealthBar</type>
+                <type>Helicopter_Prop</type>
+            </container>
+        </object-type>
+        <object-type name="Fire" sid="120323189813001">
+            <plugin id="Particles" />
+            <texture original-source="E:\OneDrive\Dev Stuff\Resources\freebundle\Sprites\Space\FX\thrust_orange_big.gif" />
+        </object-type>
+        <object-type name="HeliExplosion" sid="260372211918883">
+            <plugin id="Particles" />
+            <texture original-source="E:\OneDrive\Dev Stuff\Game Projects\BorIsaac In Space\Explosion.png" />
+        </object-type>
+        <object-type name="HeliDestroyCounter" sid="1798658970455428">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Helicopter_Prop" sid="226961544688012">
+            <plugin id="Sprite" />
+            <container>
+                <type>HeliTurret</type>
+                <type>HeliEnemy</type>
+                <type>EnemyHealthBar</type>
+                <type>Helicopter_Prop</type>
+            </container>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="783524899519958" speed="5">
+                    <frame duration="1" hotspotX="0.49697" hotspotY="0.495146" />
+                </animation>
+            </animation-folder>
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder>
+        <layout>Layout 1.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>Event sheet 1.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Mouse" uid="3" />
+        <global-instance type="Keyboard" uid="5" />
+    </global-instances>
+    <sounds-folder />
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+    </files-folder>
+</c2project>

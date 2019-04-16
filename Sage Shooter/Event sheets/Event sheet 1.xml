@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="Health" sid="2578424436246051" static="0" type="number">100</variable>
+        <variable constant="0" name="HelicoptersDestroyed" sid="5824859854707156" static="0" type="number">0</variable>
+        <variable constant="0" name="Grenades" sid="6652073524621215" static="0" type="number">5</variable>
+        <event-block sid="5496478833797073">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="5073028265989196" type="System" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="3684216394438683" type="System">
+                    <param id="0" name="Object to create">PlayerArm</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="X">Player.ImagePointX(1)</param>
+                    <param id="3" name="Y">Player.ImagePointY(1)</param>
+                </action>
+                <action behavior="Turret" id="1" name="Add object to target" sid="4405607062405645" type="HeliTurret">
+                    <param id="0" name="Target">Player</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="7669805636243946">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="529268232150755" type="System" />
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="8697964392716343" type="PlayerArm">
+                    <param id="0" name="X">player.ImagePointX(1)</param>
+                </action>
+                <action id="-2" name="Set Y" sid="1359167002040815" type="PlayerArm">
+                    <param id="0" name="Y">player.ImagePointY(1)</param>
+                </action>
+                <action id="-1" name="Set X" sid="164658775364892" type="Cursor">
+                    <param id="0" name="X">mouse.X</param>
+                </action>
+                <action id="-2" name="Set Y" sid="8355551326475155" type="Cursor">
+                    <param id="0" name="Y">mouse.Y</param>
+                </action>
+                <action id="-10" name="Set value" sid="5973044906326556" type="Cursor">
+                    <param id="0" name="Instance variable">MouseAngle</param>
+                    <param id="1" name="Value">angle(Player.X, Player.Y, Mouse.X(&quot;Game&quot;), Mouse.Y(&quot;Game&quot;))</param>
+                </action>
+                <action id="-10" name="Set value" sid="9584233065218863" type="Cursor">
+                    <param id="0" name="Instance variable">MouseDistance</param>
+                    <param id="1" name="Value">clamp(distance(Player.X, Player.Y, Mouse.X(&quot;Game&quot;), Mouse.Y(&quot;Game&quot;)), 110, 600)</param>
+                </action>
+                <action id="-8" name="Set angle" sid="9509061554039966" type="PlayerArm">
+                    <param id="0" name="Angle">Cursor.MouseAngle</param>
+                </action>
+                <action id="-9" name="Set value" sid="2296219124229277" type="System">
+                    <param id="0" name="Variable">Health</param>
+                    <param id="1" name="Value">Player.Health</param>
+                </action>
+                <action id="-9" name="Set value" sid="7100813509926649" type="System">
+                    <param id="0" name="Variable">Grenades</param>
+                    <param id="1" name="Value">Player.Grenades</param>
+                </action>
+                <action id="3" name="Set progress" sid="2270840839241768" type="HealthBar">
+                    <param id="0" name="Value">Player.Health</param>
+                </action>
+                <action id="3" name="Set progress" sid="2858748987139878" type="EnemyHealthBar">
+                    <param id="0" name="Value">HeliEnemy.Health</param>
+                </action>
+                <action id="0" name="Set text" sid="5350391559301357" type="GrenadeCounterText">
+                    <param id="0" name="Text">&quot;x&quot; &amp; Grenades</param>
+                </action>
+                <action id="0" name="Set text" sid="4203592476944849" type="HeliDestroyCounter">
+                    <param id="0" name="Text">&quot;Helicopters Destroyed: &quot; &amp; HelicoptersDestroyed</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="8808922256317385">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="9602909434342982" type="HeliEnemy">
+                            <param id="0" name="Instance variable">Health</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">40</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="9086143195768675" type="Fire">
+                            <param id="0" name="X">HeliEnemy.imagepointX(3)</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="4773942370781806" type="Fire">
+                            <param id="0" name="Y">HeliEnemy.ImagePointY(3)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="Flips player image when moving left, unflips when moving right... Allows WAD controls instead of arrows" sid="6869386096398947" title="Movement &amp; Health" />
+        <event-block sid="5852871627118661">
+            <conditions>
+                <condition id="2" name="Key is down" sid="1211153275998609" type="Keyboard">
+                    <param id="0" name="Key">65</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="1449365612010817" type="Player">
+                    <param id="0" name="Control">0</param>
+                </action>
+                <action id="7" name="Set mirrored" sid="9721997449694187" type="Player">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action id="8" name="Set flipped" sid="4401748358163851" type="PlayerArm">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="6505119882270342">
+            <conditions>
+                <condition id="2" name="Key is down" sid="1248002928085503" type="Keyboard">
+                    <param id="0" name="Key">87</param>
+                </condition>
+                <condition id="2" name="Key is down" sid="9633865770586824" type="Keyboard">
+                    <param id="0" name="Key">32</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="6933463373675392" type="Player">
+                    <param id="0" name="Control">2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="353960042478433">
+            <conditions>
+                <condition id="2" name="Key is down" sid="4648284985382455" type="Keyboard">
+                    <param id="0" name="Key">68</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="5139145736374577" type="Player">
+                    <param id="0" name="Control">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="5583041951308531">
+                    <conditions>
+                        <condition id="7" name="Is mirrored" sid="2547090309939941" type="Player" />
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Set mirrored" sid="8175182700576607" type="Player">
+                            <param id="0" name="State">1</param>
+                        </action>
+                        <action id="8" name="Set flipped" sid="2696176317436542" type="PlayerArm">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="5277398048448809">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="109325002699846" type="Player">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="7542963368023222" type="HeliEnemy" />
+                <action id="-26" name="Restart layout" sid="9937609788500802" type="System" />
+                <action id="-9" name="Set value" sid="2546248007593434" type="System">
+                    <param id="0" name="Variable">HelicoptersDestroyed</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2724776867196338">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="1101531256028452" type="Player">
+                    <param id="0" name="Object">EnemyBullet</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="6512833428080263" type="Player">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Value">10</param>
+                </action>
+                <action id="-9" name="Destroy" sid="2134534195491803" type="EnemyBullet" />
+            </actions>
+        </event-block>
+        <event-group description="Guns, Grenades, Explosions, oh my!" sid="571538514116189" title="Shooting and Weaponry" />
+        <event-block sid="5132937993608099">
+            <conditions>
+                <condition id="0" name="On click" sid="1702559503067848" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="2756788996735847" type="System">
+                    <param id="0" name="Object to create">Bullet</param>
+                    <param id="1" name="Layer">&quot;game&quot;</param>
+                    <param id="2" name="X">PlayerArm.ImagePointX(1)</param>
+                    <param id="3" name="Y">PlayerArm.ImagePointY(1)</param>
+                </action>
+                <action id="-22" name="Set angle toward position" sid="7814297943405187" type="Bullet">
+                    <param id="0" name="X">Cursor.X</param>
+                    <param id="1" name="Y">Cursor.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2237839280272024">
+            <conditions>
+                <condition id="0" name="On click" sid="508992288887896" type="Mouse">
+                    <param id="0" name="Mouse button">2</param>
+                    <param id="1" name="Click type">0</param>
+                </condition>
+                <condition id="-7" name="Compare instance variable" sid="3911738538189481" type="Player">
+                    <param id="0" name="Instance variable">Grenades</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="7857963138613197" type="System">
+                    <param id="0" name="Object to create">Grenade</param>
+                    <param id="1" name="Layer">&quot;game&quot;</param>
+                    <param id="2" name="X">Player.X</param>
+                    <param id="3" name="Y">Player.Y</param>
+                </action>
+                <action id="-12" name="Subtract from" sid="8011133517662843" type="Player">
+                    <param id="0" name="Instance variable">Grenades</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-22" name="Set angle toward position" sid="3439967442750594" type="Grenade">
+                    <param id="0" name="X">Cursor.X</param>
+                    <param id="1" name="Y">Cursor.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="4033706218810347">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="3052077963431028" type="System">
+                    <param id="0" name="Interval (seconds)">0.5</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="5517730369937624" type="Grenade">
+                    <param id="0" name="Instance variable">Timer</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6106587627257922">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="3086715901329298" type="Grenade">
+                    <param id="0" name="Instance variable">Timer</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="6092528002859129" type="Grenade" />
+                <action id="-3" name="Create object" sid="1787102245644031" type="System">
+                    <param id="0" name="Object to create">Explosion</param>
+                    <param id="1" name="Layer">&quot;game&quot;</param>
+                    <param id="2" name="X">Grenade.X</param>
+                    <param id="3" name="Y">Grenade.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="9573798843969615" title="Enemies" />
+        <event-block sid="4123245052192586">
+            <conditions>
+                <condition behavior="Turret" id="1" name="On shoot" sid="9782456481694778" type="HeliTurret" />
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="238764861656684" type="HeliTurret">
+                    <param id="0" name="Object">EnemyBullet</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="Image point">random(1,3)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6119087387391582">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="2712837167573598" type="System" />
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="8492752009327179" type="HeliTurret">
+                    <param id="0" name="X">HeliEnemy.ImagePointX(1)</param>
+                </action>
+                <action id="-2" name="Set Y" sid="8128700814952612" type="HeliTurret">
+                    <param id="0" name="Y">HeliEnemy.ImagePointY(1)</param>
+                </action>
+                <action id="-1" name="Set X" sid="7214759824066795" type="EnemyHealthBar">
+                    <param id="0" name="X">HeliEnemy.ImagePointX(2)</param>
+                </action>
+                <action id="-2" name="Set Y" sid="1470514739220606" type="EnemyHealthBar">
+                    <param id="0" name="Y">HeliEnemy.ImagePointY(2)</param>
+                </action>
+                <action id="-1" name="Set X" sid="931168439146634" type="Helicopter_Prop">
+                    <param id="0" name="X">HeliEnemy.ImagePointX(4)</param>
+                </action>
+                <action id="-2" name="Set Y" sid="906954132632687" type="Helicopter_Prop">
+                    <param id="0" name="Y">HeliEnemy.ImagePointY(4)</param>
+                </action>
+                <action id="-18" name="Rotate clockwise" sid="711714309908138" type="Helicopter_Prop">
+                    <param id="0" name="Degrees">100</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8908105500687607">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="3522341672718339" type="HeliEnemy">
+                    <param id="0" name="Object">Bullet</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="1012801828820097" type="HeliEnemy">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Value">10</param>
+                </action>
+                <action id="-9" name="Destroy" sid="3128095528430056" type="Bullet" />
+            </actions>
+        </event-block>
+        <event-block sid="2537473950593228">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="1243536260064191" type="HeliEnemy">
+                    <param id="0" name="Object">Grenade</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="7415193180638135" type="Grenade" />
+                <action id="-3" name="Create object" sid="9638188102561321" type="System">
+                    <param id="0" name="Object to create">Explosion</param>
+                    <param id="1" name="Layer">&quot;game&quot;</param>
+                    <param id="2" name="X">Grenade.X</param>
+                    <param id="3" name="Y">Grenade.Y</param>
+                </action>
+                <action id="-12" name="Subtract from" sid="7858224725440959" type="HeliEnemy">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Value">30</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8381334375394438">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="5559517021013852" type="HeliEnemy">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="9630614070657943" type="HeliTurret" />
+                <action id="-9" name="Destroy" sid="8907150695687351" type="HeliEnemy" />
+                <action id="-3" name="Create object" sid="7458439234896922" type="System">
+                    <param id="0" name="Object to create">HeliExplosion</param>
+                    <param id="1" name="Layer">&quot;game&quot;</param>
+                    <param id="2" name="X">HeliEnemy.X</param>
+                    <param id="3" name="Y">HeliEnemy.Y</param>
+                </action>
+                <action id="-9" name="Destroy" sid="4320965402237959" type="EnemyHealthBar" />
+                <action id="-9" name="Destroy" sid="6814464817629697" type="Fire" />
+                <action id="-10" name="Add to" sid="5958074230353976" type="System">
+                    <param id="0" name="Variable">HelicoptersDestroyed</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="9623437155256671">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="1536370620216758" type="System">
+                    <param id="0" name="Interval (seconds)">20</param>
+                </condition>
+                <condition id="-19" name="On destroyed" sid="6801262360352293" type="HeliEnemy" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="8782401693861886" type="System">
+                    <param id="0" name="Object to create">HeliEnemy</param>
+                    <param id="1" name="Layer">&quot;game&quot;</param>
+                    <param id="2" name="X">1822</param>
+                    <param id="3" name="Y">random(125,550)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9446948662512077">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="252599743155372" type="Bullet">
+                    <param id="0" name="Object">Ground</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="9373147012423598" type="Bullet" />
+            </actions>
+        </event-block>
+        <event-block sid="9817890288384945">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="8036565377806911" type="EnemyBullet">
+                    <param id="0" name="Object">Ground</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="7668774804937914" type="EnemyBullet" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
